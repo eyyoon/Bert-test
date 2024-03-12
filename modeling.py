@@ -26,9 +26,11 @@ import re
 import numpy as np
 import six
 import tensorflow as tf
-config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = 0.9
 config.gpu_options.allow_growth = True
-session = tf.Session(config=config)
+config.gpu_options.polling_inactive_delay_msecs = 10
+session = tf.compat.v1.Session(config=config)
 
 class BertConfig(object):
   """Configuration for `BertModel`."""

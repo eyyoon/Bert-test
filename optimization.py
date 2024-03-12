@@ -20,9 +20,11 @@ from __future__ import print_function
 
 import re
 import tensorflow as tf
-config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = 0.9
 config.gpu_options.allow_growth = True
-session = tf.Session(config=config)
+config.gpu_options.polling_inactive_delay_msecs = 10
+session = tf.compat.v1.Session(config=config)
 
 def create_optimizer(loss, init_lr, num_train_steps, num_warmup_steps, use_tpu):
   """Creates an optimizer training op."""

@@ -23,7 +23,9 @@ import re
 import unicodedata
 import six
 import tensorflow as tf
-
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+session = tf.Session(config=config....)
 
 def validate_case_matches_checkpoint(do_lower_case, init_checkpoint):
   """Checks whether the casing config is consistent with the checkpoint name."""

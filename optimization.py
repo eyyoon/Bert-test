@@ -22,7 +22,7 @@ import re
 import tensorflow as tf
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
-session = tf.Session(config=config....)
+session = tf.Session(config=config)
 
 def create_optimizer(loss, init_lr, num_train_steps, num_warmup_steps, use_tpu):
   """Creates an optimizer training op."""
